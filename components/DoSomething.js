@@ -1,4 +1,5 @@
 const noflo = require('noflo');
+const Web3 = require('web3')
 
 exports.getComponent = () => {
   const c = new noflo.Component();
@@ -22,6 +23,8 @@ exports.getComponent = () => {
     }
     // Read the contents of the data packet
     const data = input.getData('in');
+    let web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
+    console.log(web3)
     // Send the contents to output port
     output.send({
       out: data,
